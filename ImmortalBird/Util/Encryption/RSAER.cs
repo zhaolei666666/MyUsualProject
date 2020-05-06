@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Util
+namespace Util.Encryption
 {
-    public class Class1
+    public static class RSAER
     {
     }
 }

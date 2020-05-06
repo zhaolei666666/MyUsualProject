@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Service
+namespace Util.Encryption
 {
-    public class Class1
+    namespace Util.Encryption
     {
     }
 }

@@ -123,6 +123,7 @@
     <Compile Include="Controllers\DashBoardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -657,6 +658,7 @@
     <Content Include="Content\libs\ueditor\third-party\video-js\font\vjs.eot" />
     <Content Include="Content\libs\ueditor\third-party\video-js\font\vjs.ttf" />
     <Content Include="Content\libs\ueditor\third-party\video-js\font\vjs.woff" />
+    <Content Include="App.Config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1188,6 +1190,7 @@
     <Content Include="Views\Shared\_BasicView.cshtml" />
     <Content Include="Views\DashBoard\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Register\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

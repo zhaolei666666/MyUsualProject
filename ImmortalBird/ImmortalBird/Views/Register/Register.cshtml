@@ -1,0 +1,138 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>AlphaAdmin</title>
+    <link rel="stylesheet" type="text/css" href="../../Content/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../Content/libs/icheck/skins/all.css">
+    <link rel="stylesheet" type="text/css" href="../../Content/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../../Content/css/style.css">
+</head>
+
+<body class="register-page">
+    <div class="login-bg">
+
+    </div>
+    <div class="register-wrapper">
+        <div class="header skew">
+        </div>
+        <div class="register-logo">
+            <a href="../../index.html">
+                <strong>Student</strong>
+            </a>
+        </div>
+        <div class="register-body">
+            <p class="text-primary text-center">设置密码</p>
+            <div class="form">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="iconfont icon-login-user"></i>
+                        </span>
+                        <input type="text" class="form-control" id="username" placeholder="请输入账号" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="iconfont icon-lock"></i>
+                        </span>
+                        <input type="password" id="pwd" class="form-control" placeholder="输入密码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="iconfont icon-input"></i>
+                        </span>
+                        <input type="password" id="pwdagain" class="form-control" placeholder="再输入一次密码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="input-group pull-left">
+                                <button type="button" id="createbtn" class="btn btn-primary" onclick="createbtn()">创建账号</button>
+                            </div>
+                        </div>
+                        @*<div class="col-xs-6">
+                                <div class="input-group pull-right">
+                                    <button type="submit" class="btn btn-primary">创建账号</button>
+                                </div>
+                            </div>*@
+                    </div>
+                </div>
+                <div class="social-auth text-center">
+
+                </div>
+                <p class="text-center">
+                    <a href="/Login/Login">前往登录</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../Scripts/js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/js/bootstrap.min.js"></script>
+    <!-- icheck.js -->
+    <script type="text/javascript" src="../../Scripts/libs/icheck/icheck.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/js/alpha.js"></script>
+    <script type="text/javascript">
+        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue'
+        })
+    </script>
+
+    <script>
+
+        function createbtn() {
+            var username = $("#username").val();
+            var pwd = $("#pwd").val();
+            var pwdagain = $("#pwdagain").val();
+
+            if (username == "") {
+                alert("请输入账号");
+                return;
+            }
+
+            if (pwd == "") {
+                alert("请输入密码");
+                return;
+            }
+
+            if (pwdagain == "") {
+                alert("请再次输入密码");
+                return;
+            }
+
+            if (pwdagain != pwd) {
+                alert("两次输入的密码不一致");
+                return;
+            }
+
+            $("#createbtn").attr("disabled", true);
+            $.post('/Register/Register', { "UserName": username, "Password": pwd }, function (result) {
+                $("#createbtn").attr("disabled", false);
+                if (resut.Code == 0) {
+                    alert(result.Message);
+                }
+                else {
+                    location.href = '/Login/Login';
+                }
+            });
+
+        }
+    </script>
+</body>
+
+</html>
