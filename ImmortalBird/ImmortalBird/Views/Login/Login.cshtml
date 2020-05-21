@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>StudentApplication</title>
+    <title>ImmortalBird</title>
     <link rel="stylesheet" type="text/css" href="../../Content/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../Content/libs/icheck/skins/all.css">
     <link rel="stylesheet" type="text/css" href="../../Content/css/iconfont.css">
@@ -22,12 +22,12 @@
         <div class="header skew">
         </div>
         <div class="login-logo">
-            <a href="../../index.html">
-                <strong>Student</strong>
+            <a href="javascript:void(0)">
+                <strong>ImmortalBird</strong>
             </a>
         </div>
         <div class="login-body">
-            <p class="text-primary text-center">欢迎使用贫困学生管理系统</p>
+            <p class="text-primary text-center">welcome</p>
             <div class="form">
                 <div class="form-group">
                     <div class="input-group">
@@ -103,12 +103,13 @@
             var pwd = $("#pwd").val();
 
             if (check(UserName, pwd)) {
-                $.post('/Login/Login', { 'UserName': phone, 'Password': pwd }, function (result) {
-                    if (result.code == 0) {
+                $.post('/Login/Login', { 'UserName': UserName, 'Password': pwd }, function (result) {
+                    if (result.Code == 0) {
                         alert(result.Message);
                     }
-                    else if (result.code == 1) {
-                        window.location.href = '/MainPage/Dashbord';
+                    else if (result.Code == 1) {
+                        alert("132");
+                        window.location.href = '/DashBoard/Index';
                     }
                 });
             }

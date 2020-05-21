@@ -13,10 +13,17 @@ namespace Domain.Business
         {
             using (FirstEntities db = new FirstEntities())
             {
-                if (user != null)
-                    db.Users.Add(user);
+                try
+                {
+                    if (user != null)
+                        db.Users.Add(user);
 
-                db.SaveChanges();
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    string a = ex.ToString();
+                }
             }
         }
 

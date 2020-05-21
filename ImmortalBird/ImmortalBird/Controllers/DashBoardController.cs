@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace ImmortalBird.Controllers
 {
-    public class DashBoardController : Controller
+    public class DashBoardController : BaseController
     {
         // GET: DashBoard
         public ActionResult Index()

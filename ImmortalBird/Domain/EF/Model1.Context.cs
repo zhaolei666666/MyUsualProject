@@ -19,7 +19,7 @@ namespace Domain.EF
             : base("name=FirstEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
