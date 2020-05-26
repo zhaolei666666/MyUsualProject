@@ -19,12 +19,13 @@ namespace Domain.EF
             : base("name=FirstEntities")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
     
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<DailySign> DailySign { get; set; }
     }
 }

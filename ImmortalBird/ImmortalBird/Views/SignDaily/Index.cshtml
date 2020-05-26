@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_BasicView.cshtml";
+}
+
+@section cssAdd{
+    <style>
+        th {
+            text-align: center;
+        }
+    </style>
+}
+
+<div class="page-header">
+    <h1 class="title">
+        签到信息
+        <small style="color:orangered">数据表格</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="javascript:void(0)" title="HOME">
+                <i class="iconfont icon-home"></i>
+                <small>HOME</small>
+            </a>
+        </li>
+        <li class="active">
+            <small>签到信息</small>
+        </li>
+    </ol>
+</div>
+<section class="page-body">
+    <div class="row widget">
+        <section class="col-md-12">
+            <div class="box table">
+                <div class="box-header">
+                    @*<h3 class="box-title">车站信息</h3>*@
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addSta">签 到</button>
+                </div>
+                <div class="box-body">
+                    <table id="table" class="table table-responsive table-hover">
+                        <thead>
+                            <tr>
+                                <th>车站名称</th>
+                                <th hidden>StationId</th>
+                                <th>车站地址</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr style="text-align: center">
+                                <td style="vertical-align: middle;">111</td>
+                                <td class="hidden">111</td>
+                                <td style="vertical-align: middle;">111</td>
+                                <td>
+                                    <input type="button" value="删除" class="btn btn-danger  btn-xs" onclick="del(this);" />
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</section>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $('#table').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': false,
+                'info': true,
+                'autoWidth': false,
+                language: {
+                    "sProcessing": "处理中...",
+                    "sLengthMenu": "显示 _MENU_ 项结果",
+                    "sZeroRecords": "没有匹配结果",
+                    "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                    "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                    "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                    "sInfoPostFix": "",
+                    "sSearch": "搜索:",
+                    "sUrl": "",
+                    "sEmptyTable": "表中数据为空",
+                    "sLoadingRecords": "载入中...",
+                    "sInfoThousands": ",",
+                    "oPaginate": {
+                        "sFirst": "首页",
+                        "sPrevious": "上页",
+                        "sNext": "下页",
+                        "sLast": "末页"
+                    }
+                }
+            });
+        });
+
+        function del(btn) {
+            if (confirm("您确定删除该车站吗？")) {
+                var StationId = $(btn).parents("tr").find("td").eq(1).text();
+
+                console.log(StationId);
+
+                if (StationId.trim().length > 0) {
+                    $.post('/Station/DelStation', { "StationId": StationId }, function (result) {
+                        alert(result.Message);
+                        location.reload();
+                    });
+                }
+                else {
+                    alert("请重试");
+                    location.reload();
+                }
+            }
+        }
+
+
+
+    </script>
+}
+
