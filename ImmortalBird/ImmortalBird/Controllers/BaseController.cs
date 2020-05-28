@@ -8,6 +8,7 @@ namespace ImmortalBird.Controllers
 {
     public class BaseController : Controller
     {
+        protected string UserName { get; set; }
         public bool IsCheck { get; set; } = true;
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
@@ -20,6 +21,9 @@ namespace ImmortalBird.Controllers
                 {
                     filterContext.HttpContext.Response.Redirect("/Login/Login");
                 }
+
+                ViewBag.UserName = filterContext.HttpContext.Session["username"].ToString();
+                UserName = filterContext.HttpContext.Session["username"].ToString();
             }
         }
     }

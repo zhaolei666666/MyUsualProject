@@ -102,6 +102,8 @@
     <Compile Include="Other\ValidateHelper.cs" />
     <Compile Include="Other\XMLHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RedisH\StackExchangeRedisConnection.cs" />
+    <Compile Include="RedisH\StackExchangeRedisManager.cs" />
     <Compile Include="Text\CharCode.cs" />
     <Compile Include="Text\ChineseCode.cs" />
     <Compile Include="Text\ChineseToPinYin.cs" />
@@ -114,8 +116,6 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="RedisH\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

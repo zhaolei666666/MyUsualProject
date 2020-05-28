@@ -15,7 +15,14 @@
 <div class="page-header">
     <h1 class="title">
         签到信息
-        <small style="color:orangered">数据表格</small>
+        @if (ViewBag.IsSign == false)
+        {
+            <small style="color:orangered">NOT SIGN TODAY</small>
+        }
+        else
+        {
+            <small style="color:cornflowerblue">SIGNED TODAY</small>
+        }
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -35,7 +42,7 @@
             <div class="box table">
                 <div class="box-header">
                     @*<h3 class="box-title">车站信息</h3>*@
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addSta">签 到</button>
+                    <button type="button" id="btn" class="btn btn-primary" onclick="signnow();">签 到</button>
                 </div>
                 <div class="box-body">
                     <table id="table" class="table table-responsive table-hover">
@@ -121,6 +128,23 @@
 
 
 
+    </script>
+
+    <script>
+        $(function () {
+            if ('@ViewBag.IsSign' == 'True')
+                $("#btn").attr('disabled', true);
+
+        });
+        function signnow() {
+            $.post('/SignDaily/SignNow', '', function (result) {
+                if (result.Code == 1) {
+                    $("#btn").attr('disabled', true);
+                    location.reload();
+                }
+                alert(result.Message);
+            });
+        }
     </script>
 }
 

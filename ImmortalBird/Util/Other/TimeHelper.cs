@@ -102,7 +102,20 @@ namespace Util.Other
             TimeSpan span = endDate - beginDate;
             return Convert.ToInt32(span.TotalDays);
         }
-        #endregion 
+        #endregion
+
+        #region get seconds from now to today end
+        public static long GetSeconds()
+        {
+            DateTime dtnow = DateTime.Now;
+            string dtmorning = dtnow.ToString("yyyy-MM-dd") + " 23:59:59";
+            DateTime dtm = DateTime.Parse(dtmorning);
+
+            TimeSpan ts = dtm.Subtract(dtnow);
+
+            return (long)ts.TotalSeconds;
+        }
+        #endregion
 
     }
 }
